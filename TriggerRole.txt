@@ -1,0 +1,33 @@
+1. XXX_PENILAIAN
+   AFTER UPDATE ON FIELD STATUS_DATA / AFTER INSERT  -> cek new.status_data = 1 
+		jika new.status_data = 1 
+		maka 
+		insert ke XXX_NILAI_TERCATAT sesuai role yang telah di diskusikan sebelumnya
+		update XXX_ASET SET NILAI_BUKU dan NILAI_WAJAR
+2. XXX_USULAN_ASET
+   AFTER UPDATE ON FIELD STATUS_DATA / AFTER INSERT -> cek new.status_data = 1 
+		jika new.status_data = 1 
+		maka
+		Cek jenis usulan 
+			jika jenis usulan = 'LELANG'
+				insert ke XXX_LELANG (NO_REGISTER=NO_REGISTER pada table USULAN_ASET,STATUS_DATA=0)
+				update XXX_ASET SET NILAI_BUKU dan NILAI_WAJAR
+			else
+				insert ke XXX_NILAI_TERCATAT sesuai role yang telah di diskusikan sebelumnya
+				update XXX_ASET SET NILAI_BUKU
+			
+3. XXX_LELANG
+    AFTER UPDATE ON FIELD STATUS_DATA / AFTER INSERT -> cek new.status_data = 1
+	jika new.status_data=1
+	maka 
+		insert ke XXX_NILAI_TERCATAT sesuai role yang telah di diskusikan sebelumnya
+		update XXX_ASET SET NILAI_BUKU=sesuai role saat entri di nilai tercatat,SET STATUS_ASET='TIDAK-AKTIF'
+4. XXX_USULAN_TINDAK_LANJUT
+    AFTER UPDATE ON FIELD STATUS_DATA / AFTER INSERT -> cek new.status_data = 1 
+   jika new.status_data=1
+   maka 
+   1 update XXX_ASET status_aset='TINDAK-LANJUT' WHERE NO_REGISTER IN(select NO_REGISTER FROM XXX_USULAN_ASET WHERE id_usulan=id_usulan ditable XXX_USULAN_TINDAK_LANJUT )
+   2 update XXX_USULAN status_tindak_lanjut='S' where id_usulan = id_usulan di XXX_USULAN_TINDAK_LANJUT 
+5. XXX_NILAI_TERCATAT
+    AFTER UPDATE ON FIELD STATUS_DATA / AFTER INSERT -> cek new.status_data = 1 
+		update XXX_ASET SET NILAI_BUKU=sesuai role saat entri di nilai tercatat,SET STATUS_ASET='TIDAK-AKTIF'

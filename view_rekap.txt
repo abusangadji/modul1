@@ -1,0 +1,30 @@
+ocalhost:8049/siknl-ui
+
+knl1 operator
+knl1 block_area
+
+knl2 
+ABMAC_ASET kanwil 
+bc 		kanwil_beacukai
+        kantor_beacukai
+bmkl	kode_sskel		
+kjk		kejari
+		kejati
+gra		kanwil
+kpk		kanwil
+lain_aset	lembaga
+potensial	kementiral lembaga
+
+knl3
+bdlk	debitur
+bppnk	debitur
+ppak	debitur
+bdl 	kanwil
+bppn 	kanwil
+ppa 	kanwil
+bdl_lain	asal bdl
+bdl_saham	jenis_surat_berharga
+bppn_saham	jenis_surat_berharga
+ppa_saham	jenis_surat_berharga
+bppn_nonstro	bank
+bppn_inven		jenis inventaris
